@@ -70,6 +70,7 @@ class LinkedList:
              new_node=Node(data)
              new_node.ref=n.ref
              n.ref=new_node
+    
         
     def insert_empty(self,data):
         if self.head is None:
@@ -83,6 +84,8 @@ class LinkedList:
             print("the linked list is empty : we can't delete any element")
         else:
             self.head=self.head.ref
+            
+            
     def delete_end(self):
         if self.head is None:
             print("the linked list is empty: we can't delete")
@@ -94,6 +97,23 @@ class LinkedList:
                 n=n.ref
             n.ref=None
             
+            
+     def delete_by_value(self,x):
+        if self.head is None :
+            print("we can't delete :the linked list is empty ")
+            return 
+        if self.head.data==x:
+            self.head=self.head.ref
+            return 
+        n=self.head 
+        while n.ref is not None:
+            if n.ref.data==x:
+                break
+            n=n.ref
+        if n.ref is None:
+            print("node is not present")
+        else:
+             n.ref=n.ref.ref
             
             
             
