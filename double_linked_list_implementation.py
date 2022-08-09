@@ -97,7 +97,16 @@ class DoubleLinkedList:
                     self.head=new_node
                 n.pref=new_node
                 
-                 
+     def delete_begin(self):
+        if self.head is None:
+            print("you can't delete the linked list is empty ")
+            return
+        if self.head.nref is None:
+            self.head=None
+            print("the linked list now is empty ")
+        else:
+            self.head=self.head.nref
+            self.head.pref=None      
                  
             
             
@@ -124,6 +133,11 @@ doublell.add_after(25,30)
 doublell.add_before(5,10)
 doublell.add_before(2,5)
 doublell.add_end(50)
+doublell.delete_begin()
+doublell.delete_begin()
+doublell.delete_begin()
+doublell.delete_begin()
+doublell.delete_begin()
 print("------------------Begin--------------------------")
 doublell.print_ll()
 print("------------------Reverse------------------")
