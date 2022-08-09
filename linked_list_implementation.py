@@ -83,6 +83,23 @@ class LinkedList:
             print("the linked list is empty : we can't delete any element")
         else:
             self.head=self.head.ref
+    def delete_end(self):
+        if self.head is None:
+            print("the linked list is empty: we can't delete")
+        elif self.head.ref is None:
+            self.head=None
+        else:
+            n=self.head
+            while n.ref.ref is not None:
+                n=n.ref
+            n.ref=None
+            
+            
+            
+            
+            
+            
+            
 ll1=LinkedList()     
 ll1.add_begin(10)
 ll1.add_before(20,10)
