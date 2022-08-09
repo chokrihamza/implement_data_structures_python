@@ -77,7 +77,12 @@ class LinkedList:
             self.head=new_node
         else:
             print("linked list is not empty")       
-        
+    def delete_begin(self):
+        """Delete the first node in the linked list"""
+        if self.head is None:
+            print("the linked list is empty : we can't delete any element")
+        else:
+            self.head=self.head.ref
 ll1=LinkedList()     
 ll1.add_begin(10)
 ll1.add_before(20,10)
