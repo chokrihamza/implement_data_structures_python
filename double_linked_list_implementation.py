@@ -1,1 +1,130 @@
-
+# implement a double linked list in python 
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.pref=None
+        self.nref=None 
+        
+        
+class DoubleLinkedList:
+    def __init__(self):
+        self.head=None
+    def print_ll(self):
+        """ Function to traverse double linked list forward"""
+        if self.head==None:
+            print("Linked list is empty")
+        else:
+            n=self.head
+            while n is not None:
+                print(n.data)
+                n=n.nref
+    def print_ll_reverse(self):
+        """ Function to traverse double linked list backward"""
+        if self.head is None:
+            print("Linked list is empty")
+        else:
+            n=self.head
+            while n.nref is not None:
+                n=n.nref
+            while n is not None:
+                print(n.data)
+                n=n.pref
+            
+    def insert_empty(self,data):
+        if self.head is None:
+            new_node=Node(data)
+            self.head=new_node
+        else:
+            priny("the linked list is not empty")
+            
+    def add_begin(self ,data):
+        new_node=Node(data)
+        if self.head is None:
+            self.head=new_node
+        else:
+            new_node.nref=self.head
+            self.head.pref=new_node
+            self.head=new_node
+    
+    def add_end(self,data):
+        new_node=Node(data)
+        if self.head is None:
+            self.head=new_node 
+        else:
+            # nove to the tail 
+            n=self.head
+            while n.nref is not None:
+                n=n.nref
+            n.nref=new_node
+            new_node.pref=n
+    def add_after(self,data,x):
+       
+        if self.head==None:
+            print("you can't insert : the double linked list is empty")
+        else:
+            n=self.head
+            while n is not None:
+                if n.data==x:
+                   break
+                n=n.nref
+            if n is None:
+                print("the node isn't in the linked list !!!")
+            else:
+                 new_node=Node(data)
+                 new_node.nref=n.nref
+                 new_node.pref=n
+                 if n.nref is not None:
+                     n.nref.pref=new_node 
+                 n.nref=new_node
+    def add_before(self,data,x):
+        if self.head==None:
+            print("you can't insert : the double linked list is empty")
+        else:
+            n=self.head
+            while n is not None:
+                if n.data==x:
+                    break
+                n=n.nref
+            if n is None:
+                print("the node isn't in the linked list !!!")
+            else:
+                new_node=Node(data)
+                new_node.nref=n
+                new_node.pref=n.pref
+                if n.pref is not None:
+                    n.pref.nref=new_node
+                else:
+                    self.head=new_node
+                n.pref=new_node
+                
+                 
+                 
+            
+            
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            
+        
+            
+            
+            
+doublell= DoubleLinkedList()
+doublell.insert_empty(10)
+doublell.add_begin(20)
+doublell.add_after(30,20)
+doublell.add_after(25,30)
+doublell.add_before(5,10)
+doublell.add_before(2,5)
+doublell.add_end(50)
+print("------------------Begin--------------------------")
+doublell.print_ll()
+print("------------------Reverse------------------")
+doublell.print_ll_reverse()        
