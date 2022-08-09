@@ -123,6 +123,40 @@ class DoubleLinkedList:
             n.pref.nref=None
               
             
+     def delete_by_value(self,x):
+        if self.head is None:
+            # if the double linked list is empty 
+            print("you can't delete the linked list is empty ")
+            return
+        if self.head.nref is None:
+            # if the node is a head 
+              if self.head.data==x:
+                  self.head=None
+              else:
+                  print("x not equal the value in the node")
+              return 
+           
+        if self.head.data==x:
+            # if it's the first node 
+            self.head=self.head.nref
+            self.head.pref=None
+            return 
+        n=self.head
+        while n.nref is not None :
+            if n.data==x:
+                break
+            n=n.nref
+        if n.nref is not None :
+            n.pref.nref=n.nref
+            n.nref.pref=n.pref
+        else:
+            if n.data==x:
+                  n.pref.nref=None
+            else:
+                print("x is not exist in the double linked list")
+            
+        
+        
             
         
         
@@ -147,11 +181,10 @@ doublell.add_before(5,10)
 doublell.add_before(2,5)
 doublell.add_end(50)
 doublell.delete_begin()
-doublell.delete_begin()
-doublell.delete_begin()
-doublell.delete_begin()
-doublell.delete_begin()
+doublell.delete_end()
+doublell.delete_end()
+doublell.delete_by_value(5)
 print("------------------Begin--------------------------")
 doublell.print_ll()
 print("------------------Reverse------------------")
-doublell.print_ll_reverse()        
+doublell.print_ll_reverse()       
