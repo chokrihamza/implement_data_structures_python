@@ -108,7 +108,20 @@ class DoubleLinkedList:
             self.head=self.head.nref
             self.head.pref=None      
                  
+    def delete_end(self):
+        if self.head is None:
+            print("you can't delete the linked list is empty ")
+            return
+        if self.head.nref is None:
+            self.head=None
+            print("the linked list now is empty ")
+        else:
+            n=self.head
+            while n.nref is not None:
+                n=n.nref
             
+            n.pref.nref=None
+              
             
             
         
