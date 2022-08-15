@@ -23,7 +23,21 @@ class BST:
             else:
                   self.rchild=BST(data)
         
-        
+     def search(self,data):
+        if self.key==data:
+            print("Node exist")
+            return
+        if self.key > data:
+            if self.lchild:
+                 self.lchild.search(data)
+            else:
+                print("Node is not present in te tree !!!")
+        else:
+            if self.rchild:
+                self.rchild.search(data)
+            else:
+                print("Node is not present in te tree !!!")
+                
         
 
 root=BST(10)
