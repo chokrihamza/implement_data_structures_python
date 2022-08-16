@@ -1,3 +1,28 @@
+# stack for reverse order traversal 
+
+class Stack(object):
+    def __init__(self):
+        self.items=[]
+    def push(self,item):
+        self.items.append(item)
+        
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+            
+    def is_empty(self):
+        return len(self.items)==0  
+    
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]
+     # override len function
+    def __len__(self):
+        return len(self.items)
+
+
+
+
 # queue for Level order traversal
 
 class Queue(object):
@@ -18,10 +43,6 @@ class Queue(object):
     # override len function
     def __len__(self):
         return len(self.items)
-
-
-
-
 
 
 
@@ -144,6 +165,26 @@ class BST:
                 queue.enqueue(node.lchild) 
             if node.rchild:
                 queue.enqueue(node.rchild) 
+                
+                
+   def reverse_level_order_traversal(self,start):
+        if start is None:
+            return 
+        queue=Queue()
+        stack=Stack()
+        queue.enqueue(start)
+        while queue:
+            node=queue.dequeue()
+            
+            stack.push(node)
+            if node.rchild:
+                queue.enqueue(node.rchild)
+            if node.lchild:
+                queue.enqueue(node.lchild)
+        
+        while stack:
+            node=stack.pop()
+            print(node.key)
 
 root=BST(10)
 #root.lchild=BST(5)
@@ -187,4 +228,15 @@ print(root.key,root.lchild.lchild,root.rchild)
 list1=[20,4,30,4,1,5,6]
 for i in list1:
     root.insert(i)
-    
+ 
+#root.search(98)
+print("preorder")
+root.preorder()
+print("inorder")
+root.inorder()
+print("postorder")
+root.postorder()
+print("levelorder")
+root.level_order_traversal(root)
+print("reverse_level_order_traversal")
+root.reverse_level_order_traversal(root)
