@@ -1,3 +1,31 @@
+# queue for Level order traversal
+
+class Queue(object):
+    def __init__(self):
+        self.items=[]
+    def enqueue(self,item):
+        self.items.insert(0,item)
+    def dequeue(self):
+        if not self.is_empty():
+            return self.items.pop()
+            
+    def is_empty(self):
+        return len(self.items)==0
+    
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1].key
+    # override len function
+    def __len__(self):
+        return len(self.items)
+
+
+
+
+
+
+
+
 class BST:
     def __init__(self,key):
         self.key=key
@@ -102,6 +130,20 @@ class BST:
             self.rchild=self.rchild.delete(node.key)
         return self
                 
+        
+        
+   def level_order_traversal(self,start):
+        if start is None:
+            return 
+        queue=Queue()
+        queue.enqueue(start)
+        while queue:
+            node=queue.dequeue()
+            print(node.key)
+            if node.lchild:
+                queue.enqueue(node.lchild) 
+            if node.rchild:
+                queue.enqueue(node.rchild) 
 
 root=BST(10)
 #root.lchild=BST(5)
